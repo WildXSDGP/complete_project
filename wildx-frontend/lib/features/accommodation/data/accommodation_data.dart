@@ -1,0 +1,68 @@
+﻿import '../models/accommodation.dart';
+
+final List<Accommodation> dummyAccommodations = [
+  const Accommodation(
+    id: 'acc_001',
+    name: 'Green Valley Eco-Lodge',
+    parkName: 'Yala National Park',
+    pricePerNight: 9500,
+    distanceFromGate: 4.0,
+    travelTime: '20 mins',
+    fuelStops: 1,
+    rating: 4.9,
+    isEcoFriendly: true,
+    isFamilyFriendly: true,
+    hasJeepHire: true,
+    imageUrls: ['assets/images/acc_green_valley.jpg'],
+    description:
+        'A serene eco-lodge nestled in the heart of Yala, offering sustainable luxury with panoramic views of the surrounding wilderness.',
+  ),
+  const Accommodation(
+    id: 'acc_002',
+    name: 'Yala Safari Lodge',
+    parkName: 'Yala National Park',
+    pricePerNight: 8500,
+    distanceFromGate: 2.5,
+    travelTime: '12 mins',
+    fuelStops: 1,
+    rating: 4.7,
+    isEcoFriendly: true,
+    isFamilyFriendly: false,
+    hasJeepHire: false,
+    imageUrls: ['assets/images/acc_yala.jpg'],
+    description:
+        'An intimate safari camp just minutes from the main gate, perfect for early morning game drives and spotting leopards.',
+  ),
+  const Accommodation(
+    id: 'acc_003',
+    name: 'Wilpattu Forest Camp',
+    parkName: 'Wilpattu National Park',
+    pricePerNight: 6200,
+    distanceFromGate: 1.2,
+    travelTime: '10 mins',
+    fuelStops: 0,
+    rating: 4.5,
+    isEcoFriendly: false,
+    isFamilyFriendly: false,
+    hasJeepHire: false,
+    imageUrls: ['assets/images/acc_wilpattu.jpg'],
+    description:
+        'A rustic tented camp on the edge of Wilpattu, offering an authentic bush experience among ancient forest lakes.',
+  ),
+  const Accommodation(
+    id: 'acc_004',
+    name: 'Udawalawe Family Resort',
+    parkName: 'Udawalawe National Park',
+    pricePerNight: 12000,
+    distanceFromGate: 7.8,
+    travelTime: '25 mins',
+    fuelStops: 2,
+    rating: 4.6,
+    isEcoFriendly: false,
+    isFamilyFriendly: true,
+    hasJeepHire: true,
+    imageUrls: ['assets/images/acc_udawalawe.jfif'],
+    description:
+        'A spacious family resort near Udawalawe, renowned for elephant sightings and child-friendly amenities.',
+  ),
+];
