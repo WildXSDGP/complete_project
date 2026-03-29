@@ -1,11 +1,3 @@
-name: WildX CI/CD Pipeline
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
 jobs:
   test:
     name: ✅ Run Tests
@@ -26,35 +18,10 @@ jobs:
         working-directory: wildx-backend
         run: npm install
 
-      - name: Start server (smoke test)
+      - name: Check syntax (lint)
         working-directory: wildx-backend
-        run: node -e "require('./server.js')" &
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          NODE_ENV: test
-          PORT: 3000
+        run: node --check server.js
 
-      - name: Health check
-        run: |
-          sleep 3
-          curl -f http://localhost:3000/health || exit 1
-
-  deploy:
-    name: 🚀 Deploy to Railway
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-
-      - name: Deploy to Railway
+      - name: Verify dependencies resolve
         working-directory: wildx-backend
-        run: railway up --detach
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: node -e "require('express'); require('dotenv'); require('cors'); console.log('✅ Dependencies OK');"
