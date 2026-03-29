@@ -26,7 +26,7 @@ jobs:
         working-directory: wildx-backend
         run: npm install
 
-      - name: Check syntax (lint)
+      - name: Check syntax
         working-directory: wildx-backend
         run: node --check server.js
 
@@ -41,15 +41,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-
-      - name: Deploy to Railway
-        working-directory: wildx-backend
-        run: railway up --detach --service wildx-backend
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
+      - name: Trigger Railway Deploy
+        run: |
+          curl -X POST "${{ secrets.RAILWAY_DEPLOY_HOOK_URL }}"
+          echo "✅ Railway deploy triggered!"
